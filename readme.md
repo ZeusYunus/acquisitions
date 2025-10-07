@@ -38,3 +38,13 @@ npm run db:generate
 
 # Push changes to neon
 npm run db:migrate
+
+
+## Json web token
+npm i jsonwebtoken
+
+## Zod
+npm i zod
+
+## bcrypt
+npm i bcrypt

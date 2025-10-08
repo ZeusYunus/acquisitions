@@ -5,6 +5,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 ## Development Commands
 
 ### Running the Application
+
 ```bash
 # Start development server with hot reloading
 npm run dev
@@ -13,6 +14,7 @@ npm run dev
 ```
 
 ### Code Quality
+
 ```bash
 # Lint code
 npm run lint
@@ -28,6 +30,7 @@ npm run format:check
 ```
 
 ### Database Operations
+
 ```bash
 # Generate new migration files from schema changes
 npm run db:generate
@@ -42,6 +45,7 @@ npm run db:studio
 ## Architecture Overview
 
 ### Application Structure
+
 This is a Node.js Express API with a clean MVC-style architecture:
 
 - **Entry Point**: `src/index.js` loads environment and starts server
@@ -71,6 +75,7 @@ This is a Node.js Express API with a clean MVC-style architecture:
    - Role-based access (user/admin roles)
 
 ### Directory Structure
+
 ```
 src/
 ├── config/          # Database and logger configuration
@@ -83,6 +88,7 @@ src/
 ```
 
 ### Current API Endpoints
+
 - `GET /` - Basic hello endpoint
 - `GET /health` - Health check with uptime
 - `GET /api` - API status check
@@ -93,6 +99,7 @@ src/
 ## Technology Stack
 
 ### Core Dependencies
+
 - **Express 5.1.0** - Web framework
 - **Drizzle ORM 0.44.6** - Database ORM
 - **@neondatabase/serverless** - Neon PostgreSQL driver
@@ -104,6 +111,7 @@ src/
 - **CORS** - Cross-origin resource sharing
 
 ### Development Stack
+
 - **ESLint** - Code linting with custom rules
 - **Prettier** - Code formatting
 - **Drizzle Kit** - Database migrations and studio
@@ -111,6 +119,7 @@ src/
 ## Environment Configuration
 
 Required environment variables (see `.env.example`):
+
 - `PORT` - Server port (default: 3000)
 - `NODE_ENV` - Environment (development/production)
 - `LOG_LEVEL` - Logging level (default: info)
@@ -120,6 +129,7 @@ Required environment variables (see `.env.example`):
 ## Development Notes
 
 ### Code Style
+
 - ES modules (type: "module" in package.json)
 - 2-space indentation
 - Single quotes for strings
@@ -127,19 +137,23 @@ Required environment variables (see `.env.example`):
 - Semicolons required
 
 ### Database Schema
+
 Current schema includes a `users` table with:
+
 - Serial ID primary key
 - Name, email (unique), password (hashed)
 - Role field (user/admin)
 - Created/updated timestamps
 
 ### Logging
+
 - Winston logger with file and console transports
 - Structured JSON logging for production
 - Colored console output in development
 - HTTP request logging via Morgan
 
 ### Security Features
+
 - Helmet for security headers
 - HTTP-only cookies for JWT tokens
 - CORS protection
@@ -147,6 +161,7 @@ Current schema includes a `users` table with:
 - Password hashing with bcrypt
 
 ### Known Incomplete Features
+
 - Sign-in and sign-out endpoints are placeholders
 - No middleware for JWT verification
 - No role-based authorization middleware

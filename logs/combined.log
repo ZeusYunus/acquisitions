@@ -42,3 +42,9 @@
 {"level":"info","message":"New user created: cole@gmail.com","service":"acquisitions-api"}
 {"level":"info","message":"User registered successfully: cole@gmail.com","service":"acquisitions-api"}
 {"level":"info","message":"::1 - - [07/Oct/2025:20:21:01 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 111 \"-\" \"HTTPie\"","service":"acquisitions-api"}
+{"level":"info","message":"::1 - - [08/Oct/2025:18:26:14 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36\"","service":"acquisitions-api"}
+{"level":"info","message":"User authenticated successfully: cole@gmail.com","service":"acquisitions-api"}
+{"level":"info","message":"User signed in successfully: cole@gmail.com","service":"acquisitions-api"}
+{"level":"info","message":"::1 - - [08/Oct/2025:18:27:39 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 110 \"-\" \"HTTPie\"","service":"acquisitions-api"}
+{"level":"info","message":"User signed out successfully","service":"acquisitions-api"}
+{"level":"info","message":"::1 - - [08/Oct/2025:18:28:02 +0000] \"POST /api/auth/sign-out HTTP/1.1\" 200 42 \"-\" \"HTTPie\"","service":"acquisitions-api"}

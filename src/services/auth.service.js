@@ -12,6 +12,15 @@ export const hashPassword = async (password) => {
         throw new Error('Error hashing password');
     }
 }
+
+export const comparePassword = async (password, hashedPassword) => {
+    try {
+        return await bcrypt.compare(password, hashedPassword);
+    } catch (e) {
+        logger.error(`Error comparing password: ${e}`);
+        throw new Error('Error comparing password');
+    }
+}
 export const createdUser = async ({ name, email, password, role = 'user' }) => {
     try {
         const existingUser = await db.select().from(users).where(eq(users.email, email)).limit(1);
@@ -34,6 +43,34 @@ export const createdUser = async ({ name, email, password, role = 'user' }) => {
 
     } catch (e) {
         logger.error(`Error creating user: ${e}`);
+        // rethrow so controller can decide how to respond
+        throw e;
+    }
+}
+
+export const authenticateUser = async ({ email, password }) => {
+    try {
+        const [user] = await db.select().from(users).where(eq(users.email, email)).limit(1);
+
+        if (!user) {
+            // keep the specific message so controller can respond with 401
+            throw new Error('Invalid email or password');
+        }
+
+        const isPasswordValid = await comparePassword(password, user.password);
+
+        if (!isPasswordValid) {
+            throw new Error('Invalid email or password');
+        }
+
+        logger.info(`User authenticated successfully: ${email}`);
+
+        // Return user without password
+        const { password: _, ...userWithoutPassword } = user;
+        return userWithoutPassword;
+
+    } catch (e) {
+        logger.error(`Error authenticating user: ${e}`);
         // rethrow so controller can decide how to respond
         throw e;
     }
